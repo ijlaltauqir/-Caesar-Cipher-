@@ -154,11 +154,11 @@ def run(args) -> None:
 
     if args.encrypt is not None or (args.file and args.encrypt is not None):
         # ENCRYPT
-        if args.vigenere:
-            result = vigenere.encrypt(input_text, args.keyword)
+        if args.Vigenere:
+            result = Vigenere.encrypt(input_text, args.keyword)
             print(f"\n[Vigenère ENCRYPT] keyword={args.keyword}")
         else:
-            result = caesar.encrypt(input_text, args.key)
+            result = Caesar.encrypt(input_text, args.key)
             print(f"\n[Caesar ENCRYPT] shift={args.key}")
 
         print(f"  Plaintext : {input_text}")
@@ -166,11 +166,11 @@ def run(args) -> None:
 
     elif args.decrypt is not None or (args.file and args.decrypt is not None):
         # DECRYPT
-        if args.vigenere:
-            result = vigenere.decrypt(input_text, args.keyword)
+        if args.Vigenere:
+            result = Vigenere.decrypt(input_text, args.keyword)
             print(f"\n[Vigenère DECRYPT] keyword={args.keyword}")
         else:
-            result = caesar.decrypt(input_text, args.key)
+            result = Caesar.decrypt(input_text, args.key)
             print(f"\n[Caesar DECRYPT] shift={args.key}")
 
         print(f"  Ciphertext: {input_text}")
@@ -178,7 +178,7 @@ def run(args) -> None:
 
     elif args.crack:
         # CRACK with frequency analysis
-        result, found_key = caesar.crack(input_text)
+        result, found_key = Caesar.crack(input_text)
         print(f"\n[CRACK] Frequency analysis result:")
         print(f"  Ciphertext    : {input_text}")
         print(f"  Discovered key: {found_key}")
@@ -186,7 +186,7 @@ def run(args) -> None:
 
     elif args.brute:
         # BRUTE FORCE all shifts
-        results = caesar.brute_force(input_text)
+        results = Caesar.brute_force(input_text)
         print(f"\n[BRUTE FORCE] All 25 shifts for: {input_text}")
         print(f"  {'Shift':<8} {'Decrypted'}")
         print(f"  {'─'*6}   {'─'*40}")
